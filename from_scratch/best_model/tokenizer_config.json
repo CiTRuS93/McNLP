@@ -1,0 +1,22 @@
+{
+    "bos_token": "<|endoftext|>",
+    "eos_token": {
+        "content": "<|endoftext|>",
+        "single_word": false,
+        "lstrip": false,
+        "rstrip": false,
+        "normalized": true,
+        "__type": "AddedToken"
+    },
+    "unk_token": {
+        "content": "<|endoftext|>",
+        "single_word": false,
+        "lstrip": false,
+        "rstrip": false,
+        "normalized": true,
+        "__type": "AddedToken"
+    },
+    "special_tokens_map_file": null,
+    "tokenizer_file": null,
+    "name_or_path": "from_scratch"
+}

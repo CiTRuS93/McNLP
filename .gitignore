@@ -2,10 +2,12 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+cache_dir
+wandb
 # C extensions
 *.so
-
+.vscode
+.vs
 # Distribution / packaging
 .Python
 build/
