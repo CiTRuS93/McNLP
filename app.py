@@ -1,6 +1,8 @@
 from flask import Flask, request, jsonify
 from model import McNLP
+from flask_cors import CORS
 app = Flask(__name__)
+cors = CORS(app)
 model = McNLP()
 @app.route('/generate', methods=['GET'])
 def generate():
@@ -9,6 +11,8 @@ def generate():
     try:
         temperature = float(request.args.get("temperature"))
         max_length = int(request.args.get("max_length"))
+        print(temperature)
+        print(max_length)
         generated =  model.generate(string_to_start,temperature,max_length)
     except Exception as identifier:
         generated =  model.generate(string_to_start)
@@ -16,7 +20,7 @@ def generate():
     # For debugging
     
 
-    response = {'rap':generated}
+    response = {'rap':generated.replace('<s>','')}
 
     
     # Return the response in json format
