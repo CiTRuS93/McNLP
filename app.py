@@ -6,10 +6,15 @@ model = McNLP()
 def generate():
     # Retrieve the name from url parameter
     string_to_start = request.args.get("string_to_start", None)
-    temperature = request.args.get("temperature")
-    max_length = request.args.get("max_length")
+    try:
+        temperature = float(request.args.get("temperature"))
+        max_length = int(request.args.get("max_length"))
+        generated =  model.generate(string_to_start,temperature,max_length)
+    except Exception as identifier:
+        generated =  model.generate(string_to_start)
+    
     # For debugging
-    generated =  model.generate(string_to_start)
+    
 
     response = {'rap':generated}
 
