@@ -1,8 +1,0 @@
-{
-    "bos_token": "<|endoftext|>",
-    "eos_token": "<|endoftext|>",
-    "unk_token": "<|endoftext|>",
-    "special_tokens_map_file": null,
-    "tokenizer_file": null,
-    "name_or_path": "from_scratch"
-}
