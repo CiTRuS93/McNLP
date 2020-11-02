@@ -10,8 +10,8 @@ class McNLP:
 
 
 
-mc = McNLP()
-f = open("demofile2.txt", "a", encoding='utf8')
-f.write(mc.generate("שורף את הביט", temperature=1.8,max_length=300))
-f.close()
-print()
+# mc = McNLP()
+# f = open("demofile2.txt", "a", encoding='utf8')
+# f.write(mc.generate("שורף את הביט", temperature=1.8,max_length=300))
+# f.close()
+# print()
