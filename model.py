@@ -4,7 +4,7 @@ import os.path
 
 def download_model():
     import dropbox
-    dbx = dropbox.Dropbox("sl.Akxrf8MmSggBLcOER0_9GlPf4pFAriEQLa745l2E851C7Ck80Xwc3yDLpwRqbvU025201Myx2zjOxjVbCtEPADYNUhxWAm54b5q7plXob8eA-Saa9OLv3duj7p9H6Qty8FP9BI4")
+    dbx = dropbox.Dropbox("gzhGYnEbdx0AAAAAAAAAAW5Ab2pW_0ShlpGFbDOnBkzRTlSLJCBn889-RDubhfLt")
 
     with open("from_scratch/best_model/pytorch_model.bin", "wb") as f:
         print("getting file")
