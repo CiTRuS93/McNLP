@@ -21,10 +21,10 @@ class Task:
 def worker():
     while True:
         item = tasks.get()
-        print(f'Working on {item}')
+        print(f'Working on {item.client} req')
         res = item.generate(model)
-        results[item.string_to_start] = res
-        print(f'Finished {item}')
+        results[item.client] = res
+        print(f'Finished {item.client} req')
         tasks.task_done()
     
 @app.route('/generate', methods=['POST'])
@@ -48,11 +48,14 @@ def generate():
 
 @app.route('/getres', methods=['GET'])
 def get_result():
-    if request.args.get('string_to_start') in results:
-        rap = results[request.args.get('string_to_start')]
-        
+    print("got get from:")
+    print(request.remote_addr)
+    if request.remote_addr in results:
+        rap = results[request.remote_addr]
+        print("ready")
         return json.dumps({'ready':True,'rap':rap}), 200
     else:
+        print("not ready")
         return json.dumps({'ready':False})
     
     # Return the response in json format
