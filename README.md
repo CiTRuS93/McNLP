@@ -92,7 +92,7 @@ Pytorch based model with simple trasformer that was fine-tuned on more then 3000
 
 You can generate your own rap in owr page:
 <a href="https://citrus93.github.io/McNLP/"><strong>Try it yourself »</strong></a><br/>
-For more explanation about how this work check the notebook branch: [Documentation](https://example.com)_
+For more explanation about how this work check the notebook: [Documentation](https://github.com/CiTRuS93/McNLP/blob/main/McNLP-build.ipynb)_
 
 
 
