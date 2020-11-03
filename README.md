@@ -46,11 +46,11 @@
     <a href="https://citrus93.github.io/McNLP/"><strong>Try it yourself »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="https://github.com/CiTRuS93/McNLP">View Demo</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
+    <a href="https://github.com/CiTRuS93/McNLP/issues">Report Bug</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <a href="https://github.com/CiTRuS93/McNLP/issues">Request Feature</a>
   </p>
 </p>
 
