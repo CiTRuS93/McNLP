@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/McNLP/static/css/main.80348a7f.chunk.css",
-    "main.js": "/McNLP/static/js/main.3314999a.chunk.js",
-    "main.js.map": "/McNLP/static/js/main.3314999a.chunk.js.map",
+    "main.js": "/McNLP/static/js/main.b3c48fdb.chunk.js",
+    "main.js.map": "/McNLP/static/js/main.b3c48fdb.chunk.js.map",
     "runtime-main.js": "/McNLP/static/js/runtime-main.315897dd.js",
     "runtime-main.js.map": "/McNLP/static/js/runtime-main.315897dd.js.map",
     "static/js/2.dd033041.chunk.js": "/McNLP/static/js/2.dd033041.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.315897dd.js",
     "static/js/2.dd033041.chunk.js",
     "static/css/main.80348a7f.chunk.css",
-    "static/js/main.3314999a.chunk.js"
+    "static/js/main.b3c48fdb.chunk.js"
   ]
 }
