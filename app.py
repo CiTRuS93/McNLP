@@ -23,19 +23,22 @@ def worker():
         item = tasks.get()
         print(f'Working on {item}')
         res = item.generate(model)
-        results[item.client] = res
+        results[item.string_to_start] = res
         print(f'Finished {item}')
         tasks.task_done()
     
 @app.route('/generate', methods=['POST'])
 def generate():
     # Retrieve the name from url parameter
+    print("got generate from:")
+    print(request.remote_addr)
     string_to_start = request.json.get("string_to_start", None)
     try:
         temperature = float(request.json.get("temperature"))
         max_length = int(request.json.get("max_length"))
         print(temperature)
         print(max_length)
+        
         tasks.put(Task(request.remote_addr,string_to_start,temperature,max_length))
     except Exception as identifier:
         tasks.put(Task(request.remote_addr,string_to_start))
@@ -45,9 +48,9 @@ def generate():
 
 @app.route('/getres', methods=['GET'])
 def get_result():
-    if request.remote_addr in results:
-        rap = results[request.remote_addr]
-        del results[request.remote_addr]
+    if request.args.get('string_to_start') in results:
+        rap = results[request.args.get('string_to_start')]
+        
         return json.dumps({'ready':True,'rap':rap}), 200
     else:
         return json.dumps({'ready':False})
