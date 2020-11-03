@@ -1,6 +1,6 @@
 from simpletransformers.language_generation import LanguageGenerationModel
 
-import os.path
+import os
 
 def download_model():
     import dropbox
@@ -15,9 +15,13 @@ class McNLP:
     def __init__(self,):
         if not os.path.isfile('from_scratch/best_model/pytorch_model.bin'):
             download_model()    
-        
-        self.model = LanguageGenerationModel("gpt2", "from_scratch/best_model", args={"max_length": 200, "temperature":1},use_cuda=False)
-
+        try:
+            self.model = LanguageGenerationModel("gpt2", "from_scratch/best_model", args={"max_length": 200, "temperature":1},use_cuda=False)
+        except:
+            os.remove("from_scratch/best_model/pytorch_model.bin")
+            download_model()
+            print("retry") 
+            self.model = LanguageGenerationModel("gpt2", "from_scratch/best_model", args={"max_length": 200, "temperature":1},use_cuda=False)
 
     def generate(self,string_to_start,temperature=1, max_length=200):
         generated = self.model.generate(string_to_start,args={'temperature':temperature,'max_length':max_length}, verbose=False)
