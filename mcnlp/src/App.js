@@ -6,8 +6,8 @@ import Button from "@material-ui/core/Button";
 import axios from "axios";
 
 function App() {
-  const [temp, setTemp] = useState(0);
-  const [max, setmax] = useState(0);
+  const [temp, setTemp] = useState(0.8);
+  const [max, setmax] = useState(100);
   const [stringToStart, setStringToStart] = useState("");
   const [rap, setRap] = useState("");
   const [wait, setWait] = useState(false);
@@ -36,9 +36,12 @@ function App() {
         timer = setInterval(() => tick(), 1000);
       });
   }
+  //https://mcnlp.herokuapp.com
   useEffect(() => {
-    if (count === 0 && wait) {
-      axios.get("https://mcnlp.herokuapp.com/getres").then((res) => {
+    if (count === 0 && wait)
+      axios.get("https://mcnlp.herokuapp.com/getres", {params: {
+        string_to_start:stringToStart
+      }}).then((res) => {
         if (res.data.ready) {
           clearInterval(timer);
           setRap(res.data.rap);
@@ -48,11 +51,13 @@ function App() {
         }
       });
     }
-  }, [count, wait,timer]);
+  , [count, wait,timer]);
 
   return (
     <div className="App">
       <header className="App-header">
+        <h2>Mc-NLP</h2><br/>
+        <p>מודל מבוסס בינה מלאכותית שאומן על יותר מ3000 שירי ראפ בעברית וכותב (או לפחות מנסה) שירי ראפ בעצמו</p>
         <p>אורך מקסימלי (בתווים)</p>
         <TextField
           id="standard-number"
@@ -61,14 +66,16 @@ function App() {
           InputLabelProps={{
             shrink: true,
           }}
+          value={max}
           onChange={(e) => setmax(e.currentTarget.value)}
         />
-        <h7>ככל שהטמפרטורה גבוהה יותר נקבל טקסט מגוון יותר, ניתן לשחק עם הפרמטר הזה</h7>
+        <h7>(0.1-18) ככל שהטמפרטורה גבוהה יותר נקבל טקסט מגוון יותר, ניתן לשחק עם הפרמטר הזה</h7>
         <TextField
           id="filled-search"
           label="temp"
           type="search"
           variant="filled"
+          value={temp }
           onChange={(e) => setTemp(e.currentTarget.value)}
         />
         
