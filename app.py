@@ -1,3 +1,4 @@
+from typing import Counter
 from flask import Flask, request, jsonify
 from model import McNLP
 from flask_cors import CORS
@@ -26,32 +27,38 @@ def worker():
         results[item.client] = res
         print(f'Finished {item.client} req')
         tasks.task_done()
-    
+
+
+count = 0
 @app.route('/generate', methods=['POST'])
 def generate():
+    global count
+    
     # Retrieve the name from url parameter
     print("got generate from:")
     print(request.remote_addr)
     string_to_start = request.json.get("string_to_start", None)
+    count += 1
     try:
         temperature = float(request.json.get("temperature"))
         max_length = int(request.json.get("max_length"))
         print(temperature)
         print(max_length)
         
-        tasks.put(Task(request.remote_addr,string_to_start,temperature,max_length))
+        tasks.put(Task(count,string_to_start,temperature,max_length))
     except Exception as identifier:
-        tasks.put(Task(request.remote_addr,string_to_start))
+        tasks.put(Task(count,string_to_start))
     
     # For debugging
-    return json.dumps({'success':True}), 200
+    
+    return json.dumps({'id':count}), 200
 
 @app.route('/getres', methods=['GET'])
 def get_result():
     print("got get from:")
-    print(request.remote_addr)
-    if request.remote_addr in results:
-        rap = results[request.remote_addr]
+    print(request.args.get('id'))
+    if int(request.args.get('id')) in results:
+        rap = results[int(request.args.get('id'))]
         print("ready")
         return json.dumps({'ready':True,'rap':rap}), 200
     else:
