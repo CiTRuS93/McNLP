@@ -59,6 +59,8 @@ def get_result():
     print(request.args.get('id'))
     if int(request.args.get('id')) in results:
         rap = results[int(request.args.get('id'))]
+        
+        del results[int(request.args.get('id'))]
         print("ready")
         return json.dumps({'ready':True,'rap':rap}), 200
     else:
